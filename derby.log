@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue May 19 16:57:40 PDT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014d-6e9c-834c-000001446660 
+on database directory /home/seet1/NetBeansProjects/todoApplication/zsb with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+Loaded from file:/home/seet1/NetBeansProjects/todoApplication/lib/JAVADB_DRIVER_LABEL/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_45-b14
+user.dir=/home/seet1/NetBeansProjects/todoApplication
+os.name=Linux
+os.arch=amd64
+os.version=3.14-kali1-amd64
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
