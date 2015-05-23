@@ -15,7 +15,7 @@ public class DB_util extends Util {
         String userHomeDir = System.getProperty("user.home", ".");
         String systemDir = userHomeDir + "/.todo-proj";
 
-        // Set the db system directory.
+        // Set the db system directory
         System.setProperty("derby.system.home", systemDir);
     }
 
@@ -24,14 +24,15 @@ public class DB_util extends Util {
             setDBSystemDir();
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");   
 
-            //conn = DriverManager.getConnection("jdbc:derby:todoDB;create=true;");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/todoDB;create=true");
+            conn = DriverManager.getConnection("jdbc:derby:todoDB;create=true;");
+            //conn = DriverManager.getConnection("jdbc:derby://localhost:1527/todoDB;create=true");
             /*dmd = conn.getMetaData();
             ResultSet rs1 = dmd.getTables(null, null, "users", null);
             ResultSet rs2 = dmd.getTables(null, null, "tasks", null);
             if(rs1 == null || rs2 == null){
                 createTables();
             }*/
+            createTables();
         }catch(SQLException | ClassNotFoundException se){
             se.printStackTrace(System.out);
         }
@@ -39,7 +40,7 @@ public class DB_util extends Util {
     protected void createTables(){
         
         String t1 =  "create table tasks(username varchar(25), task varchar(145), "
-                     + "initiated boolean DEFAULT FALSE NOT NULL, completed boolean DEFAULT FALSE NOT NULL";
+                     + "initiated boolean DEFAULT FALSE NOT NULL, completed boolean DEFAULT FALSE NOT NULL)";
         
         String t2 = "create table users(username varchar(75) NOT NULL PRIMARY KEY, "
                                                          +"pword varchar(75) NOT NULL)";
