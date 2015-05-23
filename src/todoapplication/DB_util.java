@@ -13,7 +13,7 @@ public class DB_util extends Util {
       
     protected void setDBSystemDir() {
         String userHomeDir = System.getProperty("user.home", ".");
-        String systemDir = userHomeDir + "/.todo-proj";
+        String systemDir = userHomeDir + "/.todoApp";
 
         // Set the db system directory
         System.setProperty("derby.system.home", systemDir);
@@ -23,15 +23,7 @@ public class DB_util extends Util {
         try{
             setDBSystemDir();
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");   
-
             conn = DriverManager.getConnection("jdbc:derby:todoDB;create=true;");
-            //conn = DriverManager.getConnection("jdbc:derby://localhost:1527/todoDB;create=true");
-            /*dmd = conn.getMetaData();
-            ResultSet rs1 = dmd.getTables(null, null, "users", null);
-            ResultSet rs2 = dmd.getTables(null, null, "tasks", null);
-            if(rs1 == null || rs2 == null){
-                createTables();
-            }*/
             createTables();
         }catch(SQLException | ClassNotFoundException se){
             se.printStackTrace(System.out);
@@ -52,9 +44,7 @@ public class DB_util extends Util {
             pstmt = conn.prepareStatement(t2);
             pstmt.executeUpdate();
             
-        }catch(SQLException se){
-            se.printStackTrace(System.out);
-        }
+        }catch(SQLException se){}
     }
     
     protected int todo_count(String username){
@@ -296,6 +286,19 @@ public class DB_util extends Util {
             se.printStackTrace(System.out);
         }
         
+    }
+    protected boolean user_exists(String username){
+        try{
+            if(conn == null)
+                conn_db();
+            String s = "select * from users";
+            pstmt = conn.prepareStatement(s);
+            res = pstmt.executeQuery();
+            while(res.next())
+                if(res.getString("username").equals(username))
+                    return true;
+        }catch(SQLException se){}
+    return false;
     }
     protected void add_task(String username, String task){
         try{

@@ -1,6 +1,7 @@
 
 package todoapplication;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ public class login_gui extends User {
     JPasswordField pfield;
     JLabel enter_user;
     JLabel enter_pass;   
+    JLabel login_error;
     list_gui lobj;
     Font f;
     Font f_title;
@@ -39,6 +41,7 @@ public class login_gui extends User {
         cancel_button = new JButton("CANCEL");
         enter_user = new JLabel("Username:");
         enter_pass = new JLabel("Password:");
+        login_error = new JLabel("Username/Password not found!");
         add_user = new JButton("Create Account");
         
         //set format and layout of frame components
@@ -57,6 +60,11 @@ public class login_gui extends User {
         enter_pass.setBounds(25, 100, 120, 20);
         enter_pass.setFont(f_title);
         
+        login_error.setBounds(25,200,200,20);
+        login_error.setFont(f_title);
+        login_error.setForeground(Color.RED);
+        login_error.setVisible(false);
+        
         add_user.setBounds(225,155,120,20);
         add_user.setOpaque(false);
         add_user.setContentAreaFilled(false);
@@ -71,6 +79,7 @@ public class login_gui extends User {
         upanel.add(enter_user);
         upanel.add(enter_pass);
         upanel.add(add_user);
+        upanel.add(login_error);
         
         //add panel to frame
         frame.getContentPane().add(upanel);
@@ -89,7 +98,7 @@ public class login_gui extends User {
                 lobj.lists(entry);
             }
             else
-                System.out.print("no");    //nah
+                login_error.setVisible(true);
             }
         });
         cancel_button.addActionListener(new ActionListener() {
