@@ -73,7 +73,6 @@ public class list_gui extends List{
             sp_done.setBounds(710, 30, 250, 325);
         }
     }
-    
     protected void lists(final String username){
         atobj = new addtask_gui();
         f = new Font("arial", Font.BOLD, 10);
@@ -144,9 +143,11 @@ public class list_gui extends List{
             public void actionPerformed(ActionEvent e) {
                 String selected = inprog.getSelectedValue().toString();
                 set_done(username, selected);
+                
                                       
                 frame.setVisible(false);          //change these so it doesnt reload
                 lists(username);
+
             }
         });
         del_task.addActionListener(new ActionListener() {

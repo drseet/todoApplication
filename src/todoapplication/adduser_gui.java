@@ -99,8 +99,10 @@ public class adduser_gui {
                 if(Arrays.equals(pfield1.getPassword(), pfield2.getPassword())){
                     pw = pfield1.getPassword();
                     String pass = new String(pw);
-                    if(uobj.user_exists(username))
+                    if(uobj.user_exists(username)){
+                        pass_no_match.setVisible(false);
                         uname_taken.setVisible(true);
+                    }    
                     else{
                         uobj.create_user(username, pass);
                         uobj.login();
@@ -108,9 +110,10 @@ public class adduser_gui {
                        
                     }
                 }    
-                else if(!Arrays.equals(pfield1.getPassword(), pfield2.getPassword()))
+                else if(!Arrays.equals(pfield1.getPassword(), pfield2.getPassword())){
+                    uname_taken.setVisible(false);
                     pass_no_match.setVisible(true);
-                
+                }
             }
         });
         cancel_button.addActionListener(new ActionListener() {
