@@ -131,7 +131,7 @@ public class list_gui extends List{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selected = new String();
-                if(!inprog.isSelectionEmpty())                
+                if(!todo.isSelectionEmpty())                
                     selected = todo.getSelectedValue().toString();
                 set_inprog(username, selected);
                 
@@ -167,7 +167,7 @@ public class list_gui extends List{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selected = new String();
-                if(!inprog.isSelectionEmpty())
+                if(!done.isSelectionEmpty())
                     selected = done.getSelectedValue().toString();
                 remove_task(username, selected);
 
