@@ -38,7 +38,7 @@ public class login_gui extends User {
         pfield = new JPasswordField(15);
         pfield.setEditable(true);
         login_button = new JButton("LOGIN");
-        cancel_button = new JButton("CANCEL");
+        cancel_button = new JButton("EXIT");
         enter_user = new JLabel("Username:");
         enter_pass = new JLabel("Password:");
         login_error = new JLabel("Username/Password not found!");

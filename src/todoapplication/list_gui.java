@@ -133,8 +133,13 @@ public class list_gui extends List{
                 String selected = todo.getSelectedValue().toString();
                 set_inprog(username, selected);
                 
-                frame.setVisible(false);          //change these so it doesnt reload
-                lists(username);
+                todo = new JList(load_todo(username));
+                todo.setFont(f_list);
+                inprog = new JList(load_inprog(username));
+                inprog.setFont(f_list);
+
+                sp_todo.setViewportView(todo);
+                sp_inprog.setViewportView(inprog);
             }
         });
         move_done.addActionListener(new ActionListener() {
@@ -144,10 +149,13 @@ public class list_gui extends List{
                 String selected = inprog.getSelectedValue().toString();
                 set_done(username, selected);
                 
-                                      
-                frame.setVisible(false);          //change these so it doesnt reload
-                lists(username);
+                inprog = new JList(load_inprog(username));
+                inprog.setFont(f_list);
+                done = new JList(load_completed(username));
+                done.setFont(f_list);
 
+                sp_inprog.setViewportView(inprog);
+                sp_done.setViewportView(done);
             }
         });
         del_task.addActionListener(new ActionListener() {
