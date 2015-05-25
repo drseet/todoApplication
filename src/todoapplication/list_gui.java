@@ -130,7 +130,9 @@ public class list_gui extends List{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selected = todo.getSelectedValue().toString();
+                String selected = new String();
+                if(!inprog.isSelectionEmpty())                
+                    selected = todo.getSelectedValue().toString();
                 set_inprog(username, selected);
                 
                 todo = new JList(load_todo(username));
@@ -146,7 +148,9 @@ public class list_gui extends List{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selected = inprog.getSelectedValue().toString();
+                String selected = new String();
+                if(!inprog.isSelectionEmpty())
+                    selected = inprog.getSelectedValue().toString();
                 set_done(username, selected);
                 
                 inprog = new JList(load_inprog(username));
@@ -162,11 +166,15 @@ public class list_gui extends List{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selected = done.getSelectedValue().toString();
+                String selected = new String();
+                if(!inprog.isSelectionEmpty())
+                    selected = done.getSelectedValue().toString();
                 remove_task(username, selected);
+
+                done = new JList(load_completed(username));
+                done.setFont(f_list);
                 
-                frame.setVisible(false);         //change dis
-                lists(username);
+                sp_done.setViewportView(done);
             }
         });
         quit.addActionListener(new ActionListener() {
